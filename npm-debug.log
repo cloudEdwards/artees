@@ -1,0 +1,57 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose node symlink /usr/bin/node
+5 verbose readDependencies using package.json deps
+6 verbose install where, deps [ '/home/vagrant/Sites/artee-shirts', [] ]
+7 info preinstall @
+8 verbose readDependencies using package.json deps
+9 silly resolved []
+10 info build /home/vagrant/Sites/artee-shirts
+11 verbose linkStuff [ false, false, false, '/home/vagrant/Sites' ]
+12 info linkStuff @
+13 verbose linkBins @
+14 verbose linkMans @
+15 verbose rebuildBundles @
+16 verbose rebuildBundles [ '.bin', 'gulp', 'gulp-autoprefixer', 'gulp-sass' ]
+17 verbose rebuild bundle /home/vagrant/Sites/artee-shirts/node_modules/gulp
+18 info build /home/vagrant/Sites/artee-shirts/node_modules/gulp
+19 info preinstall gulp@3.8.11
+20 verbose linkStuff [ false,
+20 verbose linkStuff   false,
+20 verbose linkStuff   false,
+20 verbose linkStuff   '/home/vagrant/Sites/artee-shirts/node_modules' ]
+21 info linkStuff gulp@3.8.11
+22 verbose linkBins gulp@3.8.11
+23 verbose link bins [ { gulp: './bin/gulp.js' },
+23 verbose link bins   '/home/vagrant/Sites/artee-shirts/node_modules/.bin',
+23 verbose link bins   false ]
+24 verbose linkMans gulp@3.8.11
+25 verbose rebuildBundles gulp@3.8.11
+26 verbose rebuildBundles [ 'archy',
+26 verbose rebuildBundles   'chalk',
+26 verbose rebuildBundles   'deprecated',
+26 verbose rebuildBundles   'gulp-util',
+26 verbose rebuildBundles   'interpret',
+26 verbose rebuildBundles   'liftoff',
+26 verbose rebuildBundles   'minimist',
+26 verbose rebuildBundles   'orchestrator',
+26 verbose rebuildBundles   'pretty-hrtime',
+26 verbose rebuildBundles   'semver',
+26 verbose rebuildBundles   'tildify',
+26 verbose rebuildBundles   'v8flags',
+26 verbose rebuildBundles   'vinyl-fs' ]
+27 error Error: UNKNOWN, symlink '../gulp/bin/gulp.js'
+28 error If you need help, you may report this *entire* log,
+28 error including the npm and node versions, at:
+28 error     <http://github.com/npm/npm/issues>
+29 error System Linux 3.13.0-30-generic
+30 error command "/usr/bin/node" "/usr/bin/npm" "install"
+31 error cwd /home/vagrant/Sites/artee-shirts
+32 error node -v v0.10.33
+33 error npm -v 1.4.28
+34 error path ../gulp/bin/gulp.js
+35 error code UNKNOWN
+36 error errno -1
+37 verbose exit [ -1, true ]
