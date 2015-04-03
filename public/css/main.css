@@ -1,4 +1,22 @@
 body {
-  padding-top: 70px;
-  -webkit-transition: background 1s;
-          transition: background 1s; }
+  padding-top: 70px; }
+
+.page-header {
+  color: steelblue;
+  background: lavender;
+  padding: 10px 20px;
+  border-radius: 7px;
+  display: inline-block;
+  margin: 10px 0; }
+
+h1 {
+  margin-top: 10px; }
+
+.input-group-addon {
+  width: 150px; }
+
+.input-group {
+  margin: 7px 0; }
+
+input[name=register] {
+  margin: 20px auto; }
