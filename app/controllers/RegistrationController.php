@@ -28,14 +28,40 @@ class RegistrationController extends \BaseController {
 	}
 
 
-	/**
-	 * Store a newly created resource in storage.
+	/**  Create  New Artees User
+	 * 
 	 *
 	 * @return Response
 	 */
+
 	public function store()
 	{
-		//
+
+		/* TODO: 
+			* Sanitize Input 
+			* Validate Input
+			* Create Encrypted Password
+			* Store New User to DataBase 
+		*/
+
+		$input = Input::all();
+
+		$user = e($input['user']);
+		$email = e($input['mail']);
+		$password = Hash::make(
+				e($input['pswrd']));
+
+	
+		$user = User::create([
+			'username'=>$user, 
+			'email'=>$email, 
+			'password'=> $password
+		]);
+
+
+		Auth::login($user);
+
+		return Redirect::home();
 	}
 
 

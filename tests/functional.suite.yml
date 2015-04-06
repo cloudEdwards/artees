@@ -6,8 +6,12 @@
 
 class_name: FunctionalTester
 modules:
-    enabled: [PhpBrowser, Filesystem, FunctionalHelper]
+    enabled: [Laravel4, PhpBrowser, Filesystem, FunctionalHelper, Db, Asserts]
     config: 
         PhpBrowser:
             url: 'http://artees.dev'
+        Db:
+         dsn: 'mysql:host=localhost;dbname=artee-shirts'
+         user: 'homestead'
+         password: 'secret'
 

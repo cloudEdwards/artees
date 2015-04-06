@@ -8,3 +8,4 @@
 @include('registration.partials.register')
 
 @stop
+

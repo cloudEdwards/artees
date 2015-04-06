@@ -11,7 +11,20 @@
 |
 */
 
-Route::get('/', 'PagesController@home');
+// HOME Page
 
-Route::get('register', ['as'=>'register_path', 
-		'uses'=>'RegistrationController@create']);
+Route::get('/', [
+	'as'=>'home',
+	'uses'=>'PagesController@home']);
+
+
+// Registration Form
+Route::get('register', [
+	'as'=>'register_path', 
+	'uses'=>'RegistrationController@create']);
+
+
+// Store Registration Data
+Route::post('register', [
+	'as'=>'register_path', 
+	'uses'=>'RegistrationController@store']);

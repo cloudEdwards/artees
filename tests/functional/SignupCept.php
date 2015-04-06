@@ -14,5 +14,7 @@ $I->fillField('confirmPassword', 'demo');
 
 $I->click('Sign Up');
 
+$I->assertTrue(Auth::check());
+
 $I->seeCurrentUrlEquals('');
 $I->see('Welcome to Artees!');
