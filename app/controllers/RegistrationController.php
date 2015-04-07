@@ -1,18 +1,41 @@
 <?php
 
+use Artees\Forms\RegistrationForm;
+use Artees\Registration\RegisterUserCommand;
+use Laracasts\Commander\CommandBus;
+
+
+
 class RegistrationController extends \BaseController {
 
-
+	/**
+	*@var CommandBus
+	*/
+	private $commandBus;
 
 	/**
-	 * Display a listing of the resource.
+	*@var RegistratomForm
+	*/
+	private $registrationForm;
+
+	/**
+	 *  Constructor Function to Initialize class
+	 * 
+	 *@param CommandBus $commandBus
 	 *
-	 * @return Response
-	 */
-	public function index()
+	 *@param RegistrationForm $registrationForm
+	 *
+	  */
+	function __construct(
+		Laracasts\Commander\CommandBus $commandBus,
+		 RegistrationForm $registrationForm) 
 	{
-		//
+		$this->commandBus = $commandBus;
+
+		$this->registrationForm = $registrationForm;
+
 	}
+
 
 
 	/**
@@ -29,88 +52,25 @@ class RegistrationController extends \BaseController {
 
 
 	/**  Create  New Artees User
-	 * 
 	 *
 	 * @return Response
 	 */
 
 	public function store()
 	{
+		$this->registrationForm->validate(Input::all());
 
-		/* TODO: 
-			* Sanitize Input 
-			* Validate Input
-			* Create Encrypted Password
-			* Store New User to DataBase 
-		*/
+		extract(Input::only('username','email','password'));
 
-		$input = Input::all();
+		$command = new RegisterUserCommand($username, $email, $password);
 
-		$user = e($input['user']);
-		$email = e($input['mail']);
-		$password = Hash::make(
-				e($input['pswrd']));
-
-	
-		$user = User::create([
-			'username'=>$user, 
-			'email'=>$email, 
-			'password'=> $password
-		]);
-
+		$user = $this->commandBus->execute($command);
 
 		Auth::login($user);
 
 		return Redirect::home();
 	}
 
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
 
 
 }

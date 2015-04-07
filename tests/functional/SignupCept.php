@@ -1,4 +1,8 @@
+
+
 <?php 
+
+
 $I = new FunctionalTester($scenario);
 $I->am('a guest');
 $I->wantTo('Sign Up for Artees!');
@@ -14,7 +18,9 @@ $I->fillField('confirmPassword', 'demo');
 
 $I->click('Sign Up');
 
-$I->assertTrue(Auth::check());
+
 
 $I->seeCurrentUrlEquals('');
 $I->see('Welcome to Artees!');
+
+$I->assertTrue(Auth::check());
