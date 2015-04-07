@@ -2,16 +2,13 @@
 
 use Artees\Forms\RegistrationForm;
 use Artees\Registration\RegisterUserCommand;
-use Laracasts\Commander\CommandBus;
+use Artees\Core\CommandBus;
 
 
 
 class RegistrationController extends \BaseController {
 
-	/**
-	*@var CommandBus
-	*/
-	private $commandBus;
+	use CommandBus;
 
 	/**
 	*@var RegistratomForm
@@ -26,12 +23,9 @@ class RegistrationController extends \BaseController {
 	 *@param RegistrationForm $registrationForm
 	 *
 	  */
-	function __construct(
-		Laracasts\Commander\CommandBus $commandBus,
-		 RegistrationForm $registrationForm) 
+	function __construct(RegistrationForm $registrationForm) 
 	{
-		$this->commandBus = $commandBus;
-
+		
 		$this->registrationForm = $registrationForm;
 
 	}
@@ -55,7 +49,6 @@ class RegistrationController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-
 	public function store()
 	{
 		$this->registrationForm->validate(Input::all());
@@ -64,7 +57,7 @@ class RegistrationController extends \BaseController {
 
 		$command = new RegisterUserCommand($username, $email, $password);
 
-		$user = $this->commandBus->execute($command);
+		$user = $this->execute($command);
 
 		Auth::login($user);
 

@@ -35,7 +35,6 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $hidden = array('password', 'remember_token');
 
 
-
 	/**
 	 * Passwords must always be hashed
 	 * 
