@@ -11,6 +11,12 @@
 |
 */
 
+Event::listen('Artees.Registration.Events.UserRegistered', 
+	function ($event)
+{
+	//dd('user has Registered');
+});
+
 // HOME Page
 
 Route::get('/', [
@@ -28,3 +34,37 @@ Route::get('register', [
 Route::post('register', [
 	'as'=>'register_path', 
 	'uses'=>'RegistrationController@store']);
+
+
+
+/**
+* Sessions
+*/
+Route::get('login', [
+	'as'=>'login_path', 
+	'uses'=>'SessionsController@create'
+]);
+
+Route::post('login', [
+	'as'=>'login_path', 
+	'uses'=>'SessionsController@store'
+]);
+
+
+/**
+* Statuses
+*/
+Route::get('statuses', [
+	'as'=>'statuses_path', 
+	'uses'=>'StatusesController@index'
+]);
+
+
+
+/**
+* Logout
+*/
+Route::get('logout', [
+	'as'=>'logout_path', 
+	'uses'=>'SessionsController@destroy'
+]);

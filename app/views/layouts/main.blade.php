@@ -18,6 +18,8 @@
 
 		<div class="container">
 
+			@include('flash::message')
+
 			@yield('content')
 
 		</div>
@@ -28,6 +30,7 @@
 		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
 		<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> 
+		<script>$('#flash-overlay-modal').modal();</script>
 
 	</body>
 </html>

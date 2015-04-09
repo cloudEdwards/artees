@@ -4,6 +4,8 @@ use Artees\Forms\RegistrationForm;
 use Artees\Registration\RegisterUserCommand;
 use Artees\Core\CommandBus;
 
+use Laracasts\Flash\Flash;
+
 
 
 class RegistrationController extends \BaseController {
@@ -27,7 +29,7 @@ class RegistrationController extends \BaseController {
 	{
 		
 		$this->registrationForm = $registrationForm;
-
+		$this->beforeFilter('guest');
 	}
 
 
@@ -60,6 +62,8 @@ class RegistrationController extends \BaseController {
 		$user = $this->execute($command);
 
 		Auth::login($user);
+
+		Flash::overlay('Welcome to Artees! Let\'s get started.');
 
 		return Redirect::home();
 	}

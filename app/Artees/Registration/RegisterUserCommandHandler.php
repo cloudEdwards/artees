@@ -1,16 +1,20 @@
 <?php namespace Artees\Registration;
 
 use Laracasts\Commander\CommandHandler;
+use Laracasts\Commander\Events\DispatchableTrait;
 use Artees\Users\UserRepository;
 use Artees\Users\User;
 
 class RegisterUserCommandHandler implements CommandHandler {
 
+	use DispatchableTrait;
+
+	/**
+	*	UserRepository
+	*/
 	protected $repository;
 
 	/**
-	 *  Constructor Function to Initialize class
-	 *@param CommandBus $commandBus
 	 *@param RegistrationForm $registrationForm
 	  */
 	function __construct(UserRepository $repository) 
@@ -36,6 +40,8 @@ class RegisterUserCommandHandler implements CommandHandler {
 		);
 
 		$this->repository->save($user);
+
+		$this->dispatchEventsFor($user);
 
 		return $user;
 	}

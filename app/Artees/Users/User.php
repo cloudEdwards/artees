@@ -6,9 +6,14 @@ use Illuminate\Auth\Reminders\RemindableTrait;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Eloquent, Hash;
 
+use Artees\Registration\Events\UserRegistered;
+use Laracasts\Commander\Events\EventGenerator;
+
+
+
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
-	use UserTrait, RemindableTrait;
+	use UserTrait, RemindableTrait, EventGenerator;
 
 
 	/**
@@ -45,6 +50,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		$this->attributes['password'] = Hash::make($password);
 	}
 
+
 	/**
 	 * Register a new User
 	 *
@@ -57,10 +63,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	public static function register ($username, $email, $password) 
 	{
 		$user = new static(compact('username','email','password'));
-			
-		// raise an event
+
+		$user->raise(new UserRegistered($user));
 
 		return $user;
+		
 	}
 
 

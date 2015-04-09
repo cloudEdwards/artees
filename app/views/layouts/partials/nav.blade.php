@@ -30,6 +30,29 @@
           </ul>
         </li>
       </ul>
+
+
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            @if(isset($currentUser))
+            {{$currentUser->username}}
+            {{'<strong>&#x2661</strong>'}}
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li class="divider"></li>
+            <li><a href="/logout">
+            Logout
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+        @else
+        <li><a href="/login">Login</a></li>
+        @endif
+      </ul>
+
      
     </div><!-- /.navbar-collapse -->
 
