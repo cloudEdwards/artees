@@ -17,23 +17,31 @@ Event::listen('Artees.Registration.Events.UserRegistered',
 	//dd('user has Registered');
 });
 
-// HOME Page
-
+/**
+*HOME Page
+*/
 Route::get('/', [
 	'as'=>'home',
-	'uses'=>'PagesController@home']);
+	'uses'=>'PagesController@home'
+]);
 
-
-// Registration Form
+/**
+*Registration Form
+*/
 Route::get('register', [
 	'as'=>'register_path', 
-	'uses'=>'RegistrationController@create']);
+	'uses'=>'RegistrationController@create'
+]);
 
 
-// Store Registration Data
+/**
+*Store Registration Data
+*/
+
 Route::post('register', [
 	'as'=>'register_path', 
-	'uses'=>'RegistrationController@store']);
+	'uses'=>'RegistrationController@store'
+]);
 
 
 
@@ -57,6 +65,11 @@ Route::post('login', [
 Route::get('statuses', [
 	'as'=>'statuses_path', 
 	'uses'=>'StatusesController@index'
+]);
+
+Route::post('statuses', [
+	'as'=>'statuses_path', 
+	'uses'=>'StatusesController@store'
 ]);
 
 

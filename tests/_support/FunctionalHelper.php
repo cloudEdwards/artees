@@ -9,6 +9,13 @@ use Laracasts\TestDummy\Factory as TestDummy;
 class FunctionalHelper extends \Codeception\Module
 {
 
+	/**
+	* Name Goes Here
+	*
+	* @var varName
+	* @param paramName
+	* @return mixed
+	*/
 	public function signIn()
 	{
 		$email = 'foo@example.com';
@@ -24,8 +31,43 @@ class FunctionalHelper extends \Codeception\Module
 		$I->click('Sign In');
 	}
 
+	/**
+	* Creates Dummy Test Account
+	*
+	* @param Array overrides
+	*/
 	public function haveAnAccount($overrides = [])
 	{
-		TestDummy::create('Artees\Users\User', $overrides);
+		return $this->have('Artees\Users\User', $overrides);
+	}
+
+
+	/**
+	* post status functional test
+	* 
+	* @param Array override 
+	*/
+	function postAStatus($body)
+	{
+		$I = $this->getModule('Laravel4');
+		
+		$I->fillField('body', $body);
+		$I->click('Post Status');
+
+		//$this->have('Artees\Statuses\Status', $overrides);
+	
+	}
+
+	/**
+	* Fetches a model with dummy data
+	* for testing 
+	* 
+	* @param Eloquent model
+	* @param Array overrides
+	* @return model with overrrides
+	*/
+	public function have($model, $overrides = [])
+	{
+		return TestDummy::create($model, $overrides);	
 	}
 }

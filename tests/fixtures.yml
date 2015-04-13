@@ -4,3 +4,10 @@ Artees\Users\User:
   password: $string
   created_at: $date
   updated_at: $date
+
+Artees\Statuses\Status:
+ user_id:
+   type: Artees\Users\User
+ body: $text
+ created_at: $date
+ updated_at: $date

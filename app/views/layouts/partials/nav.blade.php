@@ -49,7 +49,9 @@
           </ul>
         </li>
         @else
-        <li><a href="/login">Login</a></li>
+        <li>{{link_to_route('register_path','Create Profile')}}</li>
+        <li class="divider"></li>
+        <li>{{link_to_route('login_path','Sign In')}}</li>
         @endif
       </ul>
 
