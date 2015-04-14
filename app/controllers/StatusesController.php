@@ -30,6 +30,10 @@ class StatusesController extends \BaseController {
 	 */
 	public function index()
 	{
+		if (Auth::user() == null){ 
+			return Redirect::to('login');
+		}
+
 		$statuses = $this->statusRepository->getAllForUser(Auth::user());	
 
 		return View::make('statuses.index', compact('statuses'));
