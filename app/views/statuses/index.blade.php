@@ -2,27 +2,27 @@
 
 @section('content')
 
-<h1>Status Updates</h1>
-
 @include('layouts.partials.errors')
 
-<h3>Post a Status</h3>
+<div class="row">
+<div class="col-md-6 col-md-offset-3">
 
-{{Form::open()}}
-	<div class="form-group">
-		{{Form::label('body','Status')}}
-		{{Form::textarea('body',null, ['class'=>'form-control'])}}
+	<div class="status-post">
+		{{Form::open()}}
+			<div class="form-group status-form">
+				{{Form::textarea('body',null, ['class'=>'form-control', 'placeholder'=>"what's on your mind?" , 'rows'=>3, 'id'=>'publish'])}}
+			</div>
+			<div class="form-group status-post-submit">
+				{{Form::submit('Post Status', ['class'=>'btn btn-primary btn-xs', 'id'=>'post-status'])}}
+			</div>
+		{{Form::close()}}
 	</div>
-	<div class="form-group">
-		{{Form::submit('Post Status', ['class'=>'btn btn-primary', 'id'=>'post-status'])}}
-	</div>
-{{Form::close()}}
-
 
 <h3>Statuses</h3>
-@foreach($statuses as $status)
-	<article>{{$status->body}}</article>
-@endforeach
 
+@include('statuses.partials.statuses')
+
+</div>
+</div>
 
 @stop

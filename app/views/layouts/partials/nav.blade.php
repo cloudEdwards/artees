@@ -34,9 +34,14 @@
 
       <ul class="nav navbar-nav navbar-right">
         
+
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+
             @if(isset($currentUser))
+
+            <img class="avatar" src="{{gravatar_link($currentUser->email)}}" alt="{{$currentUser->username}}">
+
             {{$currentUser->username}}
             {{'<strong>&#x2661</strong>'}}
           <ul class="dropdown-menu" role="menu">
